@@ -17,9 +17,12 @@ def train_val_test_split(X,y):
     X_test = X_shuffled[int(0.85 * len(X_shuffled)):] 
     Y_test = Y_shuffled[int(0.85 * len(X_shuffled)):]
 
-    assert (len(np.intersect1d(X_train, X_val))) == 0
-    assert (len(np.intersect1d(X_train, X_test))) == 0
-    assert (len(np.intersect1d(X_test, X_val))) == 0
+    #check if indices are overlapping 
+    assert (len(np.intersect1d(indices[:int(0.7 * len(X_shuffled))], 
+                               indices[int(0.7 * len(X_shuffled)): int(0.85 * len(X_shuffled))]))) == 0
+    assert (len(np.intersect1d(indices[:int(0.7 * len(X_shuffled))], 
+                               indices[int(0.85 * len(X_shuffled)):]))) == 0
+    assert (len(np.intersect1d(indices[int(0.85 * len(X_shuffled)):], indices[int(0.7 * len(X_shuffled)): int(0.85 * len(X_shuffled))]))) == 0
 
     return X_train, X_val, X_test, Y_train, Y_val, Y_test
 
