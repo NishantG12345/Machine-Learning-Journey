@@ -18,7 +18,7 @@ lin = LinearRegression()
 lin.fit(x_pred, y)
 y_pred = lin.predict(x_pred)
 
-#plt.scatter(x,y, c = 'red', label = '5 Points')
+plt.scatter(x,y, c = 'red', label = '5 Points')
 plt.plot(x_pred,y_pred,c='blue', label = 'Polynomial Fit') 
 plt.title('x vs y')
 plt.xlabel('x')
